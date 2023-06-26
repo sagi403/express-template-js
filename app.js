@@ -2,6 +2,7 @@ import express from "express";
 import helmet from "helmet";
 
 import userRoutes from "./routes/userRoutes.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use("/api/users", userRoutes);
 // app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Middleware
-// app.use(notFound);
-// app.use(errorHandler);
+app.use(notFound);
+app.use(errorHandler);
 
 export { app };
